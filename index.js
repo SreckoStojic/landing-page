@@ -49,9 +49,29 @@ qS('.js-tab-3').addEventListener("click", function(){
     }
 });
 
+qS(".js-form").addEventListener("submit", function(e){
+    e.preventDefault();
+    const emailError = qS(".js-error-msg");
+    const cssErrorMsgVisibleClass = "css-error-msg-visible";
+
+    if(validateEmail(e.target.elements.email.value)) {
+        emailError.classList.remove(cssErrorMsgVisibleClass);
+    } else {
+        emailError.classList.add(cssErrorMsgVisibleClass);
+        if (e.target.elements.email.value === ''){
+            qS(".js-error-msg").innerHTML = "The input field is empty."
+            return;
+        }
+        qS(".js-error-msg").innerHTML = "The email address is not formatted correctly."
+    }
+});
 
 
 
+function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
 
 
 //document.querySelector alias

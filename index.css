@@ -459,3 +459,18 @@ footer {
     display: flex;
     gap: 40px;
 }
+
+.css-error-msg {
+    position: relative;
+    visibility: hidden;
+    color: purple;
+    font-size: 15px;
+    line-height: 26px;
+    font-weight: 800;
+    margin-top: -20px;
+    margin-right: 250px;
+}
+
+.css-error-msg-visible {
+    visibility: visible;
+}
